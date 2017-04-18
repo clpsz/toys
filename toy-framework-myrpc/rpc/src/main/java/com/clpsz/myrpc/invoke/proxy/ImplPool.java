@@ -1,6 +1,8 @@
 package com.clpsz.myrpc.invoke.proxy;
 
 
+import com.clpsz.myrpc.invoke.sample.impl.SampleAddServiceImpl;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +13,11 @@ public class ImplPool {
     private Map<String, Object> implMap = new HashMap<>();
 
     private static ImplPool INSTANCE = new ImplPool();
+
+    static {
+        //TODO: 改成用SampleAddService.class作为key
+        INSTANCE.add("com.clpsz.myrpc.invoke.sample.SampleAddService", new SampleAddServiceImpl());
+    }
 
     private ImplPool() {}
 
