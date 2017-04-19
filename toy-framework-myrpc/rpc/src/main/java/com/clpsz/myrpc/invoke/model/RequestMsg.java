@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 @Data
 public class RequestMsg implements Serializable {
+    private String msgId;
     private String className;
     private String methodName;
     private Class<?>[] methodParameterTypes;

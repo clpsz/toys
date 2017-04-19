@@ -9,5 +9,6 @@ import java.io.Serializable;
  */
 @Data
 public class ResponseMsg implements Serializable {
+    private String msgId;
     private Object result;
 }
