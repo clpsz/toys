@@ -1,5 +1,9 @@
 package com.clpsz.myrpc.invoke.proxy;
 
+import com.clpsz.myrpc.invoke.RpcInvoker;
+import com.clpsz.myrpc.invoke.model.RequestMsg;
+import com.clpsz.myrpc.invoke.model.ResponseMsg;
+import com.clpsz.myrpc.remote.local.LocalRpcInvoker;
 import org.apache.commons.lang3.reflect.MethodUtils;
 
 import java.lang.reflect.InvocationHandler;
@@ -11,12 +15,16 @@ import java.lang.reflect.Method;
 public class ClientInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        ImplPool implPool = ImplPool.getInstance();
+        RequestMsg request = new RequestMsg();
 
-        String className = method.getDeclaringClass().getName();
-        Object bean = implPool.getImpl(className);
-        String methodName = method.getName();
+        request.setClassName(method.getDeclaringClass().getName());
+        request.setMethodName(method.getName());
+        request.setMethodParameterTypes(method.getParameterTypes());
+        request.setParameters(args);
 
-        return MethodUtils.invokeMethod(bean, methodName, args);
+        RpcInvoker invoker = new LocalRpcInvoker();
+        ResponseMsg response = invoker.invoke(request);
+
+        return response.getResult();
     }
 }

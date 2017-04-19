@@ -12,7 +12,7 @@ public class CalculatorServiceTest {
     @Test
     public void doAddOperation() throws Exception {
         CalculatorService calculatorService = new CalculatorServiceImpl();
-        int result = calculatorService.doAddOperation("3", "4");
+        int result = calculatorService.doAddOperation("3", "40");
         System.out.println(result);
     }
 }
