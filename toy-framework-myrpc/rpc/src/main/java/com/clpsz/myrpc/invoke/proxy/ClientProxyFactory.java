@@ -8,8 +8,11 @@ import java.lang.reflect.Proxy;
  * Created by Administrator on 2017/4/18.
  */
 public class ClientProxyFactory {
-    public SampleAddService getProxy() {
-        return (SampleAddService)Proxy.newProxyInstance(SampleAddService.class.getClassLoader()
-                , new Class<?>[]{SampleAddService.class}, new ClientInvocationHandler());
+    @SuppressWarnings("unchecked")
+    public static <T> T getProxy(Class<T> type) {
+        return (T) Proxy.newProxyInstance(
+                type.getClassLoader(),
+                new Class<?>[]{type},
+                new ClientInvocationHandler());
     }
 }

@@ -12,7 +12,7 @@
 
 
     <modules>
-        <module>invoke</module>
+        <module>rpc</module>
         <module>client</module>
     </modules>
 
