@@ -45,7 +45,7 @@ public class RequestEndPoint {
                 MsgCallBack callBack = callBackMap.get(msgId);
                 if (callBack != null) {
                     callBackMap.remove(msgId);
-                    callBack.set(response.getResult());
+                    callBack.set(response);
                 }
             }
         };
