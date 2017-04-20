@@ -1,6 +1,7 @@
 package com.clpsz.myrpc.invoke.proxy;
 
 
+import com.clpsz.myrpc.invoke.sample.impl.FindGirlFriendServiceImpl;
 import com.clpsz.myrpc.invoke.sample.impl.SampleAddServiceImpl;
 import com.clpsz.myrpc.invoke.sample.impl.SampleSayHelloServiceImpl;
 
@@ -19,6 +20,7 @@ public class ImplPool {
         //TODO: 改成用SampleAddService.class作为key
         INSTANCE.add("com.clpsz.myrpc.invoke.sample.SampleAddService", new SampleAddServiceImpl());
         INSTANCE.add("com.clpsz.myrpc.invoke.sample.SampleSayHelloService", new SampleSayHelloServiceImpl());
+        INSTANCE.add("com.clpsz.myrpc.invoke.sample.FindGirlFriendService", new FindGirlFriendServiceImpl());
     }
 
     private ImplPool() {}
