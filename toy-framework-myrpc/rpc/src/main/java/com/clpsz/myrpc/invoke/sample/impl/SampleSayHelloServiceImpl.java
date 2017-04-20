@@ -10,4 +10,9 @@ public class SampleSayHelloServiceImpl implements SampleSayHelloService {
     public String sayHello(String word) {
         return "Hello " + word;
     }
+
+    @Override
+    public String sayHello(String prefix, String word) {
+        return new StringBuilder().append(prefix).append(" say: Hello ").append(word).toString();
+    }
 }

@@ -42,7 +42,9 @@ public class EndPointTest {
 
         SampleSayHelloService sampleSayHelloService = ClientProxyFactory.getThreadProxy(SampleSayHelloService.class);
         String result = sampleSayHelloService.sayHello("himmie");
+        String result1 = sampleSayHelloService.sayHello("peter", "hemmie");
 
         System.out.println(result);
+        System.out.println(result1);
     }
 }

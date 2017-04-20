@@ -5,4 +5,5 @@ package com.clpsz.myrpc.invoke.sample;
  */
 public interface SampleSayHelloService {
     String sayHello(String word);
+    String sayHello(String prefix, String word);
 }
