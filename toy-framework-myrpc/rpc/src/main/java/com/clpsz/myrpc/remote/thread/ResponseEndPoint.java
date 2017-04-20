@@ -25,9 +25,18 @@ public class ResponseEndPoint {
             while (true) {
                 RequestMsg request = io.readRequest();
                 logger.info("get request msg:{}", request);
-                ResponseMsg response = InvokeUtil.invokeMethod(implPool, request);
-                io.writeResponse(response);
-                logger.info("write response msg:{}", response);
+                try {
+                    ResponseMsg response = InvokeUtil.invokeMethod(implPool, request);
+                    io.writeResponse(response);
+                    logger.info("write response msg:{}", response);
+                } catch (Throwable t) {
+                    ResponseMsg response = new ResponseMsg();
+                    response.setMsgId(request.getMsgId());
+                    response.setError(t);
+                    io.writeResponse(response);
+                    logger.error("exception caught!");
+//                    t.printStackTrace();
+                }
             }
         };
 

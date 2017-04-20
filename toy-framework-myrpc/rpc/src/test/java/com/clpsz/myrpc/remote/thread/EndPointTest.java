@@ -55,11 +55,12 @@ public class EndPointTest {
         boy.setSex(Person.SEX.MALE);
         boy.setAge(28);
         Book book = new Book();
-        book.setTitle("Moby Dic");
+        book.setTitle("Moby Dic1");
         book.setAuthor("I don't know");
         boy.setFavoriteBook(book);
 
         Person girl = findGirlFriendService.findGirlFriend(boy);
+        System.out.println("get response");
         System.out.println(girl);
     }
 }

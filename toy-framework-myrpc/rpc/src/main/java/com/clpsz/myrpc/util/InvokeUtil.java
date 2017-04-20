@@ -11,21 +11,14 @@ import java.lang.reflect.InvocationTargetException;
  * Created by pp.zuo on 2017/4/19.
  */
 public class InvokeUtil {
-    public static ResponseMsg invokeMethod(ImplPool implPool, RequestMsg request) {
+    public static ResponseMsg invokeMethod(ImplPool implPool, RequestMsg request)
+            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Object bean = implPool.getImpl(request.getClassName());
         String methodName = request.getMethodName();
         Object[] parameters = request.getParameters();
 
-        Object result = null;
-        try {
-            result = MethodUtils.invokeMethod(bean, methodName, parameters);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        Object result = MethodUtils.invokeMethod(bean, methodName, parameters);
+
 
         ResponseMsg responseMsg = new ResponseMsg();
         responseMsg.setMsgId(request.getMsgId());

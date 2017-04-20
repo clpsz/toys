@@ -11,4 +11,5 @@ import java.io.Serializable;
 public class ResponseMsg implements Serializable {
     private String msgId;
     private Object result;
+    private Throwable error;
 }

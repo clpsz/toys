@@ -27,6 +27,10 @@ public class ThreadInvocationHandler implements InvocationHandler {
 
         MsgCallBack callBack = requestEndPoint.sendRequest(request);
         ResponseMsg response = (ResponseMsg) callBack.get();
+        if (response.getError() != null) {
+            throw response.getError();
+        }
+
         return response.getResult();
     }
 }

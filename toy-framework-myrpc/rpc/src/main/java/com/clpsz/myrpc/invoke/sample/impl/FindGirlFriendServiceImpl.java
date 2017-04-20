@@ -24,8 +24,9 @@ public class FindGirlFriendServiceImpl implements FindGirlFriendService {
 
         Book favoriteBook = boy.getFavoriteBook();
         if (!favoriteBook.getTitle().equals("Moby Dic")) {
-            logger.warn("you don't event like Moby Dic, you should not have a girl friend");
-            return null;
+            logger.warn("you don't even like Moby Dic, you should not have a girl friend");
+            throw new IllegalArgumentException("you don't even like Moby Dic, you should not have a girl friend");
+//            return null;
         }
 
         Person girl = new Person();

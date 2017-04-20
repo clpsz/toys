@@ -10,10 +10,9 @@ import io.netty.channel.ChannelHandlerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.ExecutionException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 /**
  * Created by pp.zuo on 2017/4/19.
@@ -43,7 +42,16 @@ public class RecvExecutorService {
 
         @Override
         public void run() {
-            ResponseMsg response = InvokeUtil.invokeMethod(implPool, request);
+            ResponseMsg response = null;
+            try {
+                response = InvokeUtil.invokeMethod(implPool, request);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
             //使用channel写入返回数据，从第一个handler开始过，确保返回数据一定会经过编码
             ChannelFuture future = ctx.channel().writeAndFlush(response);
             future.addListener(new ChannelFutureListener() {
