@@ -3,6 +3,7 @@ package com.clpsz.myrpc.remote.thread;
 import com.clpsz.myrpc.invoke.model.RequestMsg;
 import com.clpsz.myrpc.invoke.proxy.ClientProxyFactory;
 import com.clpsz.myrpc.invoke.sample.SampleAddService;
+import com.clpsz.myrpc.invoke.sample.SampleSayHelloService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,12 +25,23 @@ public class EndPointTest {
     }
 
     @Test
-    public void all() throws Exception {
+    public void testSampleAdd() throws Exception {
         new ResponseEndPoint().start();
         RequestEndPoint.getInstance().start();
 
         SampleAddService sampleAddService = ClientProxyFactory.getThreadProxy(SampleAddService.class);
         int result = sampleAddService.add(333, 4000);
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void testSampleSayHello() throws Exception {
+        new ResponseEndPoint().start();
+        RequestEndPoint.getInstance().start();
+
+        SampleSayHelloService sampleSayHelloService = ClientProxyFactory.getThreadProxy(SampleSayHelloService.class);
+        String result = sampleSayHelloService.sayHello("himmie");
 
         System.out.println(result);
     }
