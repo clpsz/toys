@@ -11,6 +11,8 @@
         <module>common</module>
         <module>rpc</module>
         <module>remote</module>
+        <module>example</module>
+        <module>spring</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:clpszrpc="http://www.clpsz.com/clpszrpc"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.clpsz.com/clpszrpc http://www.clpsz.com/clpszrpc.xsd">
+
+
+    <clpszrpc:service id="calculateServiceHandler" interfaceName="com.clpsz.rpc.example.calculator.CalculateService" ref="calculateServiceImpl" />
+    <bean id="calculateServiceImpl" class="com.clpsz.rpc.example.calculator.CalculateServiceImpl" />
+
+</beans>
