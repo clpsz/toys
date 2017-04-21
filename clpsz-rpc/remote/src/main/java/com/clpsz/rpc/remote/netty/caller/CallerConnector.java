@@ -30,8 +30,6 @@ public class CallerConnector {
             logger.info("clpsz rpc client connected on {}:{}!", host, port);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } finally {
-            eventLoop.shutdownGracefully();
         }
     }
 }

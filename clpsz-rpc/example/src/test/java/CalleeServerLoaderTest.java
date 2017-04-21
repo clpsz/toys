@@ -1,9 +1,8 @@
-package com.clpsz.rpc.remote.netty.callee;
-
-
 import com.clpsz.rpc.example.calculator.CalculateService;
-import com.clpsz.rpc.remote.netty.invoke.DynamicInvokeProxyFactory;
+import com.clpsz.rpc.remote.netty.callee.CalleeServerLoader;
 import com.clpsz.rpc.remote.netty.caller.CallerConnector;
+import com.clpsz.rpc.remote.netty.caller.RpcRequestProxy;
+import com.clpsz.rpc.remote.netty.invoke.DynamicInvokeProxyFactory;
 import org.junit.Test;
 
 /**
@@ -22,6 +21,8 @@ public class CalleeServerLoaderTest {
         caller.start();
         CalculateService calculateService = DynamicInvokeProxyFactory.getProxy(CalculateService.class);
         int result = calculateService.add(3, 4);
-        System.out.println("===================" + result);
+        System.out.println("result is: " + result);
+
+        RpcRequestProxy.getInstance().closeChannel();
     }
 }

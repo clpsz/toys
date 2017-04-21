@@ -37,9 +37,17 @@ public class RpcRequestProxy {
 
     public RpcFuture sendRequest(RpcRequest request) {
         RpcFuture future = new RpcFuture();
-        channel.writeAndFlush(request);
+        try {
+            channel.writeAndFlush(request).sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         futureMap.put(request.getId(), future);
 
         return future;
+    }
+
+    public void closeChannel() {
+        channel.close();
     }
 }

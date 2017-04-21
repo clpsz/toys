@@ -22,7 +22,8 @@ public class MyMethodInvokeUtil {
         response.setId(request.getId());
 
         try {
-            MethodUtils.invokeMethod(bean, methodName, parameters, parameterTypes);
+            Object result = MethodUtils.invokeMethod(bean, methodName, parameters, parameterTypes);
+            response.setResult(result);
         } catch (Throwable t) {
             t.printStackTrace();
             response.setCause(t);

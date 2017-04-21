@@ -10,4 +10,6 @@
     <clpszrpc:service id="calculateServiceHandler" interfaceName="com.clpsz.rpc.example.calculator.CalculateService" ref="calculateServiceImpl" />
     <bean id="calculateServiceImpl" class="com.clpsz.rpc.example.calculator.CalculateServiceImpl" />
 
+    <bean id="calleeServerLoader" class="com.clpsz.rpc.remote.netty.callee.CalleeServerLoader" />
+
 </beans>
