@@ -1,6 +1,7 @@
 package com.clpsz.rpc.example.bootstrap;
 
 import com.clpsz.rpc.ServiceImplPool;
+import com.clpsz.rpc.example.calculator.CalculateService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,5 +14,6 @@ public class ServerBootstrap {
         ServiceImplPool instance = ServiceImplPool.getInstance();
 
         System.out.println(instance.get("com.clpsz.rpc.example.calculator.CalculateService"));
+        System.out.println(ctx.getBean("calculateServiceImpl", CalculateService.class));
     }
 }

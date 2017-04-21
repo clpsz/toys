@@ -1,4 +1,4 @@
-package com.clpsz.rpc.invoke;
+package com.clpsz.rpc.remote.netty.invoke;
 
 import java.lang.reflect.Proxy;
 
@@ -7,8 +7,8 @@ import java.lang.reflect.Proxy;
  */
 public class DynamicInvokeProxyFactory {
     @SuppressWarnings("unchecked")
-    public <T> T getProxy(Class<T> interfaceName) {
+    public static <T> T getProxy(Class<T> interfaceName) {
         return (T)Proxy.newProxyInstance(interfaceName.getClassLoader(),
-                new Class<?>[]{interfaceName.getClass()}, new DynamicInvokeHandler());
+                new Class<?>[]{interfaceName}, new DynamicInvokeHandler());
     }
 }
