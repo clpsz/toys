@@ -9,5 +9,6 @@ public class ClpszRpcNamespaceHandler extends NamespaceHandlerSupport{
     @Override
     public void init() {
         registerBeanDefinitionParser("service", new ClpszRpcServiceParser());
+        registerBeanDefinitionParser("reference", new ClpszRpcReferenceParser());
     }
 }

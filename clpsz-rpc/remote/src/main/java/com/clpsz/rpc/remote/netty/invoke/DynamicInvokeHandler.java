@@ -15,6 +15,10 @@ import java.util.UUID;
 public class DynamicInvokeHandler implements InvocationHandler{
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        if (method.getName().equals("toString")) {
+            return "to string";
+        }
+
         RpcRequest request = new RpcRequest();
         request.setId(UUID.randomUUID().toString());
         request.setInterfaceName(method.getDeclaringClass().getName());
